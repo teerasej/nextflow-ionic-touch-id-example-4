@@ -16,7 +16,15 @@ export class HomePage {
     let result = await this.androidFingerPrintAuth.isAvailable();
 
     if(result.isAvailable) {
+      let response = await this.androidFingerPrintAuth.encrypt({ clientId: 'nextflow' })
+
+      if(response.withFingerprint) {
+        alert('ok, you used your fingerprint.');
+      } else if (response.withBackup) {
+        alert('ok you used your backup authentication');
+      }
       this.navCtrl.navigateForward('/dashboard');
+
     } else {
       alert('Your device has not fingerprint sensor.');
     }
