@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth/ngx';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,18 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private androidFingerPrintAuth: AndroidFingerprintAuth) {}
 
-  authenticate() {
-    this.navCtrl.navigateForward('/dashboard');
+  async authenticate() {
+
+    let result = await this.androidFingerPrintAuth.isAvailable();
+
+    if(result.isAvailable) {
+      this.navCtrl.navigateForward('/dashboard');
+    } else {
+      alert('Your device has not fingerprint sensor.');
+    }
+
   }
 
 }
