@@ -1,8 +1,8 @@
 {
   "name": "nextflow-touch-id-example",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Teerasej Jiraphatchandej",
+  "homepage": "https://www.nextflow.in.th/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
